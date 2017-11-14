@@ -30,4 +30,57 @@ rails g model category name:string
 rails db:create
 rails db:migrate
 
-//commit that shit
+//Git commit
+
+
+//make events model
+ rails g model event title:string description:text price:float location:string make_date:date
+
+
+//events controller
+
+rails g controller events --no-helper --no-assets --no-routes
+
+-> event.rb
+
+add validations
+
+validates(:title, {
+      presence: {message: 'must be provided'},
+      uniqueness: true
+  })
+  validates(:description, {
+      presence: {message: 'must be provided'},
+      length: {minimum: 10, maximum: 10000}
+  })
+  validates(:price, numericality: {
+      greater_than: 0
+  })
+  validates(:location, presence: true)
+  validates(:make_date, presence: true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- History  -->

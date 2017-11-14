@@ -1,0 +1,9 @@
+<%= simple_form_for @event do |form| %>
+  <%= form.input :title, label: 'Event Title' %>
+  <%= form.input :description %>
+  <%= form.input :price %>
+  <%= form.input :make_date, label: 'Event date' %>
+  <%= form.input :location %>
+  <%#= form.association :tags, input_html: { class: 'chosen-select' } %>
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>

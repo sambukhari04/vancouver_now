@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VancouverNow</title>
+    <title>VancouverNow!</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <%= link_to('Vancouver Now!', root_path) %>
+    <%# the aboveð generates: <a href='/'>Home</a> %>
+    |
+    <%= link_to 'Events', events_path %>
+    |
+    <%= link_to 'New Event', new_event_path %>
     <%= yield %>
   </body>
 </html>
