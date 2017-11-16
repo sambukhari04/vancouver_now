@@ -23,7 +23,7 @@ categories = Category.all
     price: Faker::Commerce.price,
     make_date: Faker::Date.forward(23),
     location: Faker::Friends.location,
-    category: categories.sample,
+    category: categories.sample
   )
 end
 
