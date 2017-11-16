@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Event.destroy_all
+Category.destroy_all
+
+15.times do
+  Category.create(
+    name: Faker::Pokemon.name
+  )
+end
+categories = Category.all
 
 50.times.each do
   Event.create(
@@ -14,7 +22,8 @@ Event.destroy_all
     description: Faker::TheFreshPrinceOfBelAir.quote,
     price: Faker::Commerce.price,
     make_date: Faker::Date.forward(23),
-    location: Faker::Friends.location
+    location: Faker::Friends.location,
+    category: categories.sample,
   )
 end
 
@@ -22,3 +31,4 @@ events = Event.all
 
 
 puts Cowsay.say("Created #{events.count} events", :dragon)
+puts Cowsay.say("Created #{categories.count} categories", :dragon)

@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-
+  belongs_to :category
 
   validates(:title, {
         presence: {message: 'must be provided'},

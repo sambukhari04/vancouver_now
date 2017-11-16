@@ -4,6 +4,7 @@
   <%= form.input :price %>
   <%= form.input :make_date, label: 'Event date' %>
   <%= form.input :location %>
+  <%= form.association :category, input_html: { class: 'chosen-select' } %>
   <%#= form.association :tags, input_html: { class: 'chosen-select' } %>
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>

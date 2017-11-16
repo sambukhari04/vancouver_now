@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :find_event, only: [:show, :edit#, :update,  :destroy]
-before_action :get_categories, only: [:new, :create#, :edit, :update]
+  before_action :find_event, only: [:show, :edit, :update,  :destroy]
+before_action :get_categories, only: [:new, :create, :edit, :update]
 
   def new
     @event = Event.new
@@ -54,7 +54,7 @@ before_action :get_categories, only: [:new, :create#, :edit, :update]
     private
 
     def event_params
-        params.require(:event).permit(:title, :description, :price, :make_date, :location)
+        params.require(:event).permit(:title, :description, :price, :make_date, :location, :category_id)
     end
 
     def find_event
