@@ -32,6 +32,9 @@ class Ability
     can :manage, Event do |event|
       event.user == user
     end
+    can :manage, Discount do |disc|
+      disc.user == user
+    end
 
   end
 end

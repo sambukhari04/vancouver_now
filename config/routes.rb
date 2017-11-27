@@ -7,14 +7,21 @@ Rails.application.routes.draw do
 
   resources :events
 
+  resources :discounts
+
   resources :users, only: [:new, :create]
 
   resources :sessions, only: [:new, :create] do
       delete :destroy, on: :collection
   end
-  namespace :admin do
+  namespace :admin, defaults: {format: :json} do
     resources :dashboard, only: [:index]
   end
+  namespace :api do
+   namespace :v1 do
+     resources :events, only: [:index, :show, :create]
+   end
+ end
 
   root 'home#index'
 end

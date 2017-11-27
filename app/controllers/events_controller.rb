@@ -9,7 +9,6 @@ class EventsController < ApplicationController
   end
 
 
-
   def create
     @event = Event.new event_params
     @event.user = current_user
@@ -25,6 +24,10 @@ class EventsController < ApplicationController
 
     def show
       # @event = Event.find params[:id]
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @event }
+      end
     end
 
     def edit

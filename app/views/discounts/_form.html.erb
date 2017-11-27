@@ -1,0 +1,10 @@
+<%= simple_form_for @discount do |form| %>
+  <%= form.input :name %>
+  <%= form.input :description %>
+  <%= form.input :discount %>
+  <%= form.input :location %>
+  <%= form.input :start_date, label: 'Start' %>
+  <%= form.input :end_date, label: 'End' %>
+
+  <%= form.submit class: 'btn btn-primary' %>
+<% end %>
