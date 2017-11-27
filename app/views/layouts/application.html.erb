@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VancouverNow</title>
+    <title>VancouverNow!</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +9,26 @@
   </head>
 
   <body>
+    <%= link_to('Vancouver Now!', root_path) %>
+    <%# the aboveð generates: <a href='/'>Home</a> %>
+    |
+    <%= link_to 'Events', events_path %>
+    |
+    <%= link_to 'New Event', new_event_path %>
+    |
+    <% if user_signed_in? %>
+      Hello <%= current_user.full_name %>
+      <% if current_user.is_admin? %>
+        <%= link_to 'Dashboard', admin_dashboard_index_path %>
+      <% end %>
+
+      <%= link_to 'Sign Out', sessions_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_session_path %>
+      |
+      <%= link_to "Sign Up", new_user_path %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
