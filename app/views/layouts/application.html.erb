@@ -16,10 +16,14 @@
     |
     <%= link_to 'New Event', new_event_path %>
     |
+    <%= link_to 'Discount', new_discount_path %>
+    |
+    <%= link_to 'Discounts', discounts_path %>
     <% if user_signed_in? %>
-      Hello <%= current_user.full_name %>
+      Hello, <%= current_user.full_name %>
       <% if current_user.is_admin? %>
-        <%= link_to 'Dashboard', admin_dashboard_index_path %>
+        <%= link_to 'Das
+        hboard', admin_dashboard_index_path %>
       <% end %>
 
       <%= link_to 'Sign Out', sessions_path, method: :delete %>
@@ -29,6 +33,13 @@
       <%= link_to "Sign Up", new_user_path %>
     <% end %>
 
+
+
+    <% if flash[:notice].present? || flash[:alert].present? %>
+    <div class="flash-message">
+      <p><%= flash[:notice] || flash[:alert] %></p>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

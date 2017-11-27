@@ -9,11 +9,12 @@ PASSWORD = '123abc'
 Event.destroy_all
 Category.destroy_all
 User.destroy_all
+Discount.destroy_all
 
 
 super_user = User.create(
   first_name: 'Samuel',
-  last_name: 'The six',
+  last_name: 'Book',
   email: 'sam@mail.ru',
   password: PASSWORD,
   is_admin: true

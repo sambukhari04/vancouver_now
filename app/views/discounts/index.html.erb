@@ -1,0 +1,8 @@
+<h1 align="center">All Discounts</h1>
+
+
+<% @discounts.each do |disc| %>
+<div class="event-list-item">
+  <%= link_to disc.name, discount_path(disc) %>
+</div>
+<%end%>

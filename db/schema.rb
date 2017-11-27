@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125024757) do
+ActiveRecord::Schema.define(version: 20171127012824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(version: 20171125024757) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_discounts_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -94,9 +97,12 @@ ActiveRecord::Schema.define(version: 20171125024757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_admin", default: false
+    t.string "api_key"
+    t.index ["api_key"], name: "index_users_on_api_key", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "discounts", "users"
   add_foreign_key "events", "categories"
   add_foreign_key "events", "users"
 end
