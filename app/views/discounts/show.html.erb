@@ -4,3 +4,16 @@
 <p><%= @discount.start_date %></p>
 <p><%= @discount.end_date %></p>
 <p><%= @discount.location %></p>
+ <%= image_tag @discount.image.url(:large) if @question.image.present? %>
+
+<p>By <%= link_to @discount.user&.full_name %></p>
+
+<% if user_signed_in? && can?(:update, @discount) %>
+  <%= link_to 'Edit', edit_discount_path(@discount) %>
+  <%= link_to(
+    'Delete',
+    discount_path(@discount),
+    data: {confirm: 'Are you sure?'},
+    method: :delete
+  ) %>
+<% end %>

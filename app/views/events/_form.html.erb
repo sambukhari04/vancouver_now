@@ -7,6 +7,7 @@
   <%= form.input :start_time, label: 'Start Time', as: :time %>
   <%= form.input :end_time, label: 'End Time', as: :time %>
   <%= form.association :category, input_html: { class: 'chosen-select' } %>
+  <%= form.input :image %>
   <%#= form.association :tags, input_html: { class: 'chosen-select' } %>
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>

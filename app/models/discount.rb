@@ -1,6 +1,9 @@
 class Discount < ApplicationRecord
   # belongs_to :company
+  # association
   belongs_to :user
+  #
+  mount_uploader :image, ImageUploader
 
   validates(:name, {
       presence: true

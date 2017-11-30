@@ -6,3 +6,15 @@
 <p><%= @event.format_start %></p>
 <p><%= @event.format_end %></p>
 <p><%= @event.category_id %></p>
+ <%= image_tag @event.image.url(:large) if @question.image.present? %>
+<p>By <%= link_to @event.user&.full_name %></p>
+
+<% if user_signed_in? && can?(:update, @event) %>
+  <%= link_to 'Edit', edit_event_path(@event) %>
+  <%= link_to(
+    'Delete',
+    event_path(@event),
+    data: {confirm: 'Are you sure?'},
+    method: :delete
+  ) %>
+<% end %>
