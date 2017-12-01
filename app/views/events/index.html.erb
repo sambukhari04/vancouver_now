@@ -1,8 +1,16 @@
 <h1 align="center">All Events</h1>
 
+<%= form_tag(events_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search" %>
+<%= submit_tag "Search" %>
+<% end %>
 
+<% if @events.present? %>
 <% @events.each do |event| %>
-<div class="event-list-item">
-  <%= link_to event.title, event_path(event) %>
-</div>
+  <div class="event-list-item">
+    <%= link_to event.title, event_path(event) %>
+  </div>
 <%end%>
+<% else %>
+  <p>There are no events containing the term(s) <%= params[:search] %>.</p>
+<% end %>
