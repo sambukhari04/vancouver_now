@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130041511) do
+ActiveRecord::Schema.define(version: 20171201024400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,12 @@ ActiveRecord::Schema.define(version: 20171130041511) do
     t.time "start_time"
     t.time "end_time"
     t.string "image"
+    t.string "street"
+    t.string "city"
+    t.string "province"
+    t.string "postal"
+    t.float "longitude"
+    t.float "latitude"
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
