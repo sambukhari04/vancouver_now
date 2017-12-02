@@ -45,9 +45,11 @@
     |
     <%= link_to 'New Event', new_event_path %>
     |
+    <%= link_to 'Nearby Events', nearby_events_path %>
+    |
     <%= link_to 'Discount', new_discount_path %>
     |
-    <%= link_to 'Discounts', discounts_path %>
+    <%= link_to 'Companies', discounts_path %>
     <% if user_signed_in? %>
       Hello, <%= current_user.full_name %>
       <% if current_user.is_admin? %>

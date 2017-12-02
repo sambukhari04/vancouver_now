@@ -56,6 +56,11 @@ class EventsController < ApplicationController
       # @events = Event.all
     if params[:search]
       @events = Event.search(params[:search]).order("created_at DESC")
+      # @discounts = Discount.search(params[:search])
+      # @combined = {
+      #   :events: @events,
+      #   :discounts: @discounts
+      # }
     else
       @events = Event.all.order('created_at DESC')
     end

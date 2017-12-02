@@ -6,19 +6,18 @@ class Event < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   # geolocation
-  geocoded_by :full_street_address   # can also be an IP address
+  geocoded_by :location   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
   validates(:title, {
         presence: {message: 'must be provided'},
-        uniqueness: true
   })
   validates(:description, {
         presence: {message: 'must be provided'},
         length: {minimum: 10, maximum: 10000}
   })
   validates(:price, numericality: {
-        greater_than: 0
+        greater_than_or_equal_to: 0
   })
   validates(:location, {
         presence: true

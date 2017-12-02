@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 
   resources :events
+  resources :nearby_events, only: [:index]
 
   resources :discounts
 
