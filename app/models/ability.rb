@@ -35,6 +35,9 @@ class Ability
     can :manage, Discount do |disc|
       disc.user == user
     end
+    can :manage, Comment do |com|
+      com.user == user
+    end
 
   end
 end

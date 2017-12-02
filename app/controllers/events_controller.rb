@@ -23,6 +23,10 @@ class EventsController < ApplicationController
 
   def show
       # @event = Event.find params[:id]
+    @comment = Comment.new
+    @comments = @event.comments
+
+
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @event }

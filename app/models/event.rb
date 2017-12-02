@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   # assciation
+  has_many :comments, dependent: :nullify
   belongs_to :category
   belongs_to :user
   # image uploader
