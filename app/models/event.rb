@@ -5,6 +5,10 @@ class Event < ApplicationRecord
   # image uploader
   mount_uploader :image, ImageUploader
 
+  # geolocation
+  geocoded_by :full_street_address   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
   validates(:title, {
         presence: {message: 'must be provided'},
         uniqueness: true
@@ -37,17 +41,13 @@ class Event < ApplicationRecord
     end_time.strftime("%I:%M %p")
   end
 
-
-
   def self.search(search)
     where("title ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%")
-
-    # where("description LIKE ?", "%#{search}%")
   end
 
-  # def self.search(search)
-  #   where("name LIKE ?", "%#{search}%")
-  #   where("content LIKE ?", "%#{search}%")
-  # end
+  def full_street_address
+    "#{street}#{city}#{province}#{postal}"
+  end
+
 
 end
