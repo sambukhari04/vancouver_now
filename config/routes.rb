@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :comments, shallow: true, only: [:create, :destroy]
+    resources :tickets, shallow: true, only: [:new, :create]
   end
 
   resources :nearby_events, only: [:index]

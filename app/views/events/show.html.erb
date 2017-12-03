@@ -7,6 +7,7 @@
 <p><%= @event.format_start %></p>
 <p><%= @event.format_end %></p>
 <p><%= @event.category_id %></p>
+<%= link_to "Buy Tickets", new_event_ticket_path(@event) %>
 <p>By <%= link_to @event.user&.full_name %></p>
 
 <% if user_signed_in? && can?(:update, @event) %>
