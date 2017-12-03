@@ -11,9 +11,7 @@ class LikesController < ApplicationController
     end
   end
 
-  def show
-    @like = @event.likes.find_by_user_id current_user
-  end
+
 
   def destroy
     like = Like.find params[:id]

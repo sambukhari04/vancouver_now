@@ -25,7 +25,7 @@ class EventsController < ApplicationController
       # @event = Event.find params[:id]
     @comment = Comment.new
     @comments = @event.comments
-
+    @like = @event.likes.find_by_user_id current_user
 
     respond_to do |format|
       format.html { render :show }

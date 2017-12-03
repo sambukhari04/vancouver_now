@@ -9,7 +9,7 @@
 <p><%= @event.category_id %></p>
 <% if user_signed_in? %>
   <% if @like.present? %>
-    <%= link_to 'Un-Like', likes_path(@event), method: :delete %>
+    <%= link_to 'Un-Like', like_path(@like), method: :delete %>
   <% else %>
     <%= link_to 'Like', event_likes_path(@event), method: :post %>
   <% end %>
