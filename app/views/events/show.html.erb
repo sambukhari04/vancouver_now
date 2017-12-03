@@ -7,6 +7,14 @@
 <p><%= @event.format_start %></p>
 <p><%= @event.format_end %></p>
 <p><%= @event.category_id %></p>
+<% if user_signed_in? %>
+  <% if @like.present? %>
+    <%= link_to 'Un-Like', likes_path(@event), method: :delete %>
+  <% else %>
+    <%= link_to 'Like', event_likes_path(@event), method: :post %>
+  <% end %>
+<% end %>
+<%= pluralize(@event.likes.count, 'person') %> liked this item.
 <%= link_to "Buy Tickets", new_event_ticket_path(@event) %>
 <p>By <%= link_to @event.user&.full_name %></p>
 

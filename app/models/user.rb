@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :event
   has_many :discount
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_items, through: :likes, source: :event
+
   before_create :generate_api_key
 
 
