@@ -7,18 +7,18 @@
 <p><%= @event.format_start %></p>
 <p><%= @event.format_end %></p>
 <p><%= @event.category_id %></p>
-<% if user_signed_in? %>
+<% if user_signed_in? && can?(:like, @event) %>
   <% if @like.present? %>
-    <%= link_to 'Un-Like', like_path(@like), method: :delete %>
+    <%= link_to fa_icon('times 2x'), like_path(@like), method: :delete %>
   <% else %>
-    <%= link_to 'Like', event_likes_path(@event), method: :post %>
+    <%= link_to fa_icon('car 2x'), event_likes_path(@event), method: :post %>
   <% end %>
 <% end %>
-<%= pluralize(@event.likes.count, 'person') %> liked this item.
+<%= pluralize(@event.likes.count, 'person') %> going to this event.
 <%= link_to "Buy Tickets", new_event_ticket_path(@event) %>
 <p>By <%= link_to @event.user&.full_name %></p>
 
-<% if user_signed_in? && can?(:update, @event) %>
+<% if user_signed_in? && can?(:crud, @event) %>
   <%= link_to 'Edit', edit_event_path(@event) %>
   <%= link_to(
     'Delete',

@@ -96,7 +96,7 @@ class EventsController < ApplicationController
   end
 
   def authorize_user!
-    unless can?(:manage, @event)
+    unless can?(:crud, @event)
       flash[:alert] = "Access Denied!"
       redirect_to root_path
     end
