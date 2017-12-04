@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
-  has_many :discount
-  has_many :user
+  has_many :discount, dependent: :destroy
+  has_many :user, dependent: :destroy
 
     validates(:name, {
         presence: true

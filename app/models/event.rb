@@ -1,8 +1,8 @@
 class Event < ApplicationRecord
   # assciation
 
-  has_many :comments, dependent: :nullify
-  has_many :tickets
+  has_many :comments, dependent: :destroy
+  has_many :tickets, dependent: :destroy
   belongs_to :category
   belongs_to :user
 

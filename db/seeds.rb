@@ -8,8 +8,27 @@
 PASSWORD = '123abc'
 Event.destroy_all
 Category.destroy_all
+Comment.destroy_all
 User.destroy_all
 Discount.destroy_all
+
+# categories = [
+#   'IT',
+#   'Business',
+#   'Arts',
+#   'Music',
+#   'Fashion',
+#   'Sports',
+#   'Tech',
+#   'Family',
+#   'Health & Wellness',
+#   'Learning',
+#   'Dance',
+#   'Food & Drink',
+# ]
+
+
+
 
 
 super_user = User.create(
@@ -35,7 +54,9 @@ categories = Category.all
     price: Faker::Commerce.price,
     make_date: Faker::Date.forward(23),
     location: Faker::Friends.location,
-    category: categories.sample
+    category: categories.sample,
+    start_time: Faker::Time.between(2.days.ago, Date.today, :morning),
+    end_time: Faker::Time.between(2.days.ago, Date.today, :evening)
   )
 end
 events = Event.all

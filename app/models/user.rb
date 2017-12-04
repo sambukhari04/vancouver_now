@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :event
-  has_many :discount
+  has_many :events, dependent: :destroy
+  has_many :discounts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :liked_items, through: :likes, source: :event

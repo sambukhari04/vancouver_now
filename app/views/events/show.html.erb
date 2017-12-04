@@ -14,6 +14,7 @@
     <%= link_to fa_icon('car 2x'), event_likes_path(@event), method: :post %>
   <% end %>
 <% end %>
+
 <%= pluralize(@event.likes.count, 'person') %> going to this event.
 <%= link_to "Buy Tickets", new_event_ticket_path(@event) %>
 <p>By <%= link_to @event.user&.full_name %></p>
@@ -47,7 +48,6 @@
   handler.getMap().setZoom(17);
   });
 </script>
-
 
 
 
