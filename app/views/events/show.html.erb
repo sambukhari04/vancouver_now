@@ -7,9 +7,19 @@
 <p><%= @event.format_start %></p>
 <p><%= @event.format_end %></p>
 <p><%= @event.category_id %></p>
+<% if user_signed_in? && can?(:like, @event) %>
+  <% if @like.present? %>
+    <%= link_to fa_icon('times 2x'), like_path(@like), method: :delete %>
+  <% else %>
+    <%= link_to fa_icon('car 2x'), event_likes_path(@event), method: :post %>
+  <% end %>
+<% end %>
+
+<%= pluralize(@event.likes.count, 'person') %> going to this event.
+<%= link_to "Buy Tickets", new_event_ticket_path(@event) %>
 <p>By <%= link_to @event.user&.full_name %></p>
 
-<% if user_signed_in? && can?(:update, @event) %>
+<% if user_signed_in? && can?(:crud, @event) %>
   <%= link_to 'Edit', edit_event_path(@event) %>
   <%= link_to(
     'Delete',
@@ -38,3 +48,36 @@
   handler.getMap().setZoom(17);
   });
 </script>
+
+
+
+<h2>Comments</h2>
+
+ <%= form_for [@event, @comment] do |f| %>
+   <% if @event.errors.present? %>
+     <p>
+       <%= @comment.errors.full_messages.join(', ') %>
+     </p>
+   <% end %>
+   <div>
+     <%= f.text_area :body %>
+   </div>
+   <%= f.submit %>
+ <% end %>
+
+ <div class="comment-list">
+   <% @comments.each do |comment| %>
+     <div class="comment-list-item">
+       <p><%= comment.body %></p>
+       <p><strong>Created At:</strong> <%= time_ago_in_words(comment.created_at) %> ago</p>
+       <% if can? :manage, comment %>
+       <%= link_to(
+         'Delete',
+         comment_path(comment),
+         data: {confirm: 'Are you sure?'},
+         method: :delete
+       ) %>
+       <% end %>
+     </div>
+   <% end %>
+ </div>

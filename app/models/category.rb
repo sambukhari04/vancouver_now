@@ -1,9 +1,8 @@
 class Category < ApplicationRecord
-  has_many :event
+  has_many :event, dependent: :destroy
 
   validates :name, {
     presence: true,
-    uniqueness: true
   }
 
 end

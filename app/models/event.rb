@@ -1,24 +1,29 @@
 class Event < ApplicationRecord
   # assciation
+
+  has_many :comments, dependent: :destroy
+  has_many :tickets, dependent: :destroy
   belongs_to :category
   belongs_to :user
+
+  has_many :likes, dependent: :destroy
+  has_many :likers, through: :likes, source: :user
   # image uploader
   mount_uploader :image, ImageUploader
 
   # geolocation
-  geocoded_by :full_street_address   # can also be an IP address
+  geocoded_by :location   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
 
   validates(:title, {
         presence: {message: 'must be provided'},
-        uniqueness: true
   })
   validates(:description, {
         presence: {message: 'must be provided'},
         length: {minimum: 10, maximum: 10000}
   })
   validates(:price, numericality: {
-        greater_than: 0
+        greater_than_or_equal_to: 0
   })
   validates(:location, {
         presence: true

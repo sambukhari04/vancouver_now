@@ -11,6 +11,7 @@ class Ability
         can :read, :all
       end
     #
+    alias_action :create, :read, :update, :destroy, :to => :crud
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
@@ -29,11 +30,24 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    can :manage, Event do |event|
-      event.user == user
+    can :crud, Event do |e|
+      e.user == user
     end
+
     can :manage, Discount do |disc|
       disc.user == user
+    end
+
+    can :manage, Comment do |com|
+      com.user == user
+    end
+    
+    can :like, Event do |e|
+      e.user != user
+    end
+
+    can :destroy, Like do |like|
+      like.user == user
     end
 
   end

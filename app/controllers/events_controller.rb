@@ -23,6 +23,10 @@ class EventsController < ApplicationController
 
   def show
       # @event = Event.find params[:id]
+    @comment = Comment.new
+    @comments = @event.comments
+    @like = @event.likes.find_by_user_id current_user
+
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @event }
@@ -56,6 +60,11 @@ class EventsController < ApplicationController
       # @events = Event.all
     if params[:search]
       @events = Event.search(params[:search]).order("created_at DESC")
+      # @discounts = Discount.search(params[:search])
+      # @combined = {
+      #   :events: @events,
+      #   :discounts: @discounts
+      # }
     else
       @events = Event.all.order('created_at DESC')
     end
@@ -87,7 +96,7 @@ class EventsController < ApplicationController
   end
 
   def authorize_user!
-    unless can?(:manage, @event)
+    unless can?(:crud, @event)
       flash[:alert] = "Access Denied!"
       redirect_to root_path
     end
