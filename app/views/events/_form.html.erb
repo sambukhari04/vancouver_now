@@ -1,5 +1,7 @@
+
+
+<div class="container-fluid">
 <%= simple_form_for @event do |form| %>
-  <h2>Event Info</h2>
   <%= form.input :title, label: 'Event Title' %>
   <%= form.input :description %>
   <%= form.input :price %>
@@ -12,3 +14,4 @@
   <%#= form.association :tags, input_html: { class: 'chosen-select' } %>
   <%= form.submit class: 'btn btn-primary' %>
 <% end %>
+</div>

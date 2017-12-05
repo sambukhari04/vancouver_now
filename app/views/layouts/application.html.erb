@@ -13,23 +13,51 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-fixed-top navbar-expand-md navbar-dark bg-dark">
-          <a class="navbar-brand" href="#"><%= link_to('Vancouver Now!', root_path) %></a>
+    <nav class="navbar navbar-sticky-top navbar-expand-md navbar-dark bg-dark">
+          <%= link_to 'Vancouver 𝓝ow!', root_path, class: "nav-link" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           MENU <span class="navbar-toggler-icon"></span>
         </button>
+
       <div class="collapse navbar-collapse navbar-fixed-top" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+           <%= link_to 'Events', events_path, class: "nav-link" %><span class="sr-only">(current)</span>
+
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <%#= link_to 'New Event', new_event_path, class: "nav-link"   %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <%= link_to 'Nearby Events', nearby_events_path, class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%#= link_to 'Discount', new_discount_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Companies', discounts_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <% if user_signed_in? %>
+              Hello, <%= current_user.full_name %>
+            </li>
+            <li class="nav-item">
+              <% if current_user.is_admin? %>
+                <%= link_to 'Dashboard', admin_dashboard_index_path, class: "nav-link" %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Out', sessions_path, method: :delete, class: "nav-link" %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to "Sign In", new_session_path, class: "nav-link" %>
+            </li>
+              <li class="nav-item">
+              <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
+              <% end %>
+            </li>
         </ul>
       </div>
     </nav>
@@ -38,39 +66,41 @@
 
 
 
-    <%= link_to('Vancouver Now!', root_path) %>
-    <%# the aboveð generates: <a href='/'>Home</a> %>
-    |
-    <%= link_to 'Events', events_path %>
-    |
-    <%= link_to 'New Event', new_event_path %>
-    |
-    <%= link_to 'Nearby Events', nearby_events_path %>
-    |
-    <%= link_to 'Discount', new_discount_path %>
-    |
-    <%= link_to 'Companies', discounts_path %>
-    <% if user_signed_in? %>
-      Hello, <%= current_user.full_name %>
-      <% if current_user.is_admin? %>
-        <%= link_to 'Das
-        hboard', admin_dashboard_index_path %>
-      <% end %>
-
-      <%= link_to 'Sign Out', sessions_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign In", new_session_path %>
-      |
-      <%= link_to "Sign Up", new_user_path %>
-    <% end %>
 
 
 
-    <% if flash[:notice].present? || flash[:alert].present? %>
-    <div class="flash-message">
-      <p><%= flash[:notice] || flash[:alert] %></p>
-    </div>
-    <% end %>
-    <%= yield %>
+
+
+    <main class="container-fluid">
+        <%# ALERTS %>
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success alert-dismissable fade-show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+
+        <% if flash[:alert].present? %>
+          <div class="alert alert-danger alert-dismissable fade-show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class='row'>
+
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>

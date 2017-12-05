@@ -1,4 +1,11 @@
+
 <h1 align="center">All Discounts</h1>
+<div class="row">
+  <div class="ml-auto p-2" >
+  <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#newDiscountModal">Add New Discount</button>
+  <%= render './modals/new_discount_modal' %>
+</div>
+</div>
 
 
 <% @discounts.each do |disc| %>

@@ -1,0 +1,36 @@
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="newEventModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">New Event</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+          <%= simple_form_for @event1 do |form| %>
+            <%= form.input :title, label: 'Event Title' %>
+            <%= form.input :description %>
+            <%= form.input :price %>
+            <%= form.input :make_date, label: 'Event date' %>
+            <%= form.input :location %>
+            <%= form.input :start_time, label: 'Start Time', as: :time %>
+            <%= form.input :end_time, label: 'End Time', as: :time %>
+            <%= form.association :category, input_html: { class: 'chosen-select' } %>
+            <%= form.input :image %>
+            <%#= form.association :tags, input_html: { class: 'chosen-select' } %>
+            <%= form.submit class: 'btn btn-primary' %>
+          <% end %>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+
+    </div>
+  </div>
+</div>
