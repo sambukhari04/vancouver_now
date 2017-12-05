@@ -1,12 +1,29 @@
-<%= image_tag @event.image.url(:large) if @event.image.present? %>
-<h2><%= @event.title %></h2>
+
+<div class="row">
+  <div class="col-8">
+    <div>
+
+    <%= image_tag @event.image.url(:large) if @event.image.present? %>
+  </div>
+    <div>
+
+      <h2><%= @event.title %></h2>
+    </div>
+  </div>
+  <div class="col-4">
+    <div style='width: 500px;'>
+      <div id="map" style='width: 500px; height: 400px;'></div>
+    </div>
+  </div>
+
+
 <p><%= @event.description %></p>
 <p><%= @event.price %></p>
 <p><%= @event.make_date %></p>
 <p><%= @event.location %></p>
 <p><%= @event.format_start %></p>
 <p><%= @event.format_end %></p>
-<p><%= @event.category_id %></p>
+<p><%= @event.category %></p>
 <% if user_signed_in? && can?(:like, @event) %>
   <% if @like.present? %>
     <%= link_to fa_icon('times 2x'), like_path(@like), method: :delete %>
@@ -29,25 +46,9 @@
   ) %>
 <% end %>
 
-<div style='width: 500px;'>
-  <div id="map" style='width: 500px; height: 400px;'></div>
-</div>
 
-<script>
-  const handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    {
-      "lat": <%= @event.latitude %>,
-      "lng": <%= @event.longitude %>,
-      "infowindow": "<%= @event.title %> location"
-    }
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  handler.getMap().setZoom(17);
-  });
-</script>
+
+
 
 
 
@@ -81,3 +82,20 @@
      </div>
    <% end %>
  </div>
+</div>
+
+<script>
+  const handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": <%= @event.latitude %>,
+      "lng": <%= @event.longitude %>,
+      "infowindow": "<%= @event.title %> location"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(17);
+  });
+</script>

@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   def initiate_instance_variables
     @event1 = Event.new
     @discount1 = Discount.new
+    @user1 = User.new
   end
+  helper_method :initiate_instance_variables
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
