@@ -1,12 +1,11 @@
-
+<div class="container">
 <div class="row">
   <div class="col-8">
     <div>
-
-    <%= image_tag @event.image.url(:large) if @event.image.present? %>
+    <img class= "grow show" <%= image_tag @event.image.url(:large), style: "width:700px; height:350px" if @event.image.present? %>
   </div>
-    <div>
 
+    <div>
       <h2><%= @event.title %></h2>
     </div>
   </div>
@@ -17,13 +16,13 @@
   </div>
 
 
-<p><%= @event.description %></p>
-<p><%= @event.price %></p>
-<p><%= @event.make_date %></p>
-<p><%= @event.location %></p>
-<p><%= @event.format_start %></p>
-<p><%= @event.format_end %></p>
-<p><%= @event.category %></p>
+<p><strong>Event Details:</strong> <%= @event.description %></p>
+<p><strong>Price:</strong> $<%= @event.price %></p>
+<p><strong>Date:</strong><%= @event.make_date %></p>
+<p><strong>Location:</strong><%= @event.location %></p>
+<span><p><strong>From:</strong><%= @event.format_start %></p>
+<p><strong>To:</strong><%= @event.format_end %></p></span>
+<p><%#= @event.category.name %></p>
 <% if user_signed_in? && can?(:like, @event) %>
   <% if @like.present? %>
     <%= link_to fa_icon('times 2x'), like_path(@like), method: :delete %>
@@ -48,41 +47,35 @@
 
 
 
+<div class="row">
+    <div class="col-2">
+        <span class="logo"><%= fa_icon('user-circle-o 2x') %></span>
+    </div>
+    <div class="col-6">
+      <h5>Comments</h5>
+
+      <%= render 'comments/comment_form' %>
+
+      <div class="comment-list">
+        <% @event.comments.each do |comment| %>
+            <%= render '/comments/comment', comment: comment %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-4">
+    </div>
+  </div>
 
 
 
 
-<h2>Comments</h2>
 
- <%= form_for [@event, @comment] do |f| %>
-   <% if @event.errors.present? %>
-     <p>
-       <%= @comment.errors.full_messages.join(', ') %>
-     </p>
-   <% end %>
-   <div>
-     <%= f.text_area :body %>
-   </div>
-   <%= f.submit %>
- <% end %>
-
- <div class="comment-list">
-   <% @comments.each do |comment| %>
-     <div class="comment-list-item">
-       <p><%= comment.body %></p>
-       <p><strong>Created At:</strong> <%= time_ago_in_words(comment.created_at) %> ago</p>
-       <% if can? :manage, comment %>
-       <%= link_to(
-         'Delete',
-         comment_path(comment),
-         data: {confirm: 'Are you sure?'},
-         method: :delete
-       ) %>
-       <% end %>
-     </div>
-   <% end %>
- </div>
 </div>
+</div>
+
+
+
 
 <script>
   const handler = Gmaps.build('Google');

@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-sticky-top navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-sticky-top navbar-expand-md" style="background-color: #403E3E; ">
           <%= link_to 'Vancouver 𝓝ow!', root_path, class: "nav-link" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           MENU <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
 
           <li class="nav-item">
             <% if user_signed_in? %>
-              Hello, <%= current_user.full_name %>
+              <a class="nav-link">Hello, <%= current_user.full_name %></a>
             </li>
             <li class="nav-item">
               <% if current_user.is_admin? %>
@@ -146,7 +146,7 @@
 
     <div class="footer">
     <div class="footer-social-icons">
-    <p>©Vancouver Now! 2017</p>
+    <p>©Vancouver Now! 2017 All Rights Reserved</p>
         <ul class="social-icons mb-0">
             <li><a href="" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
             <li><a href="" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
