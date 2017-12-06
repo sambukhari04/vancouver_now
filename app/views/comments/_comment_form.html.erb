@@ -1,7 +1,10 @@
 
-
-
+<div class="container">
+<div class="row">
+<h5>Comments</h5>
  <%= simple_form_for [@event, @comment] do |form| %>
    <%= form.input :body %>
        <%= form.submit class: 'btn btn-primary' %>
  <% end %>
+</div>
+</div>

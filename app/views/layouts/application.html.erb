@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-sticky-top navbar-expand-md" style="background-color: #403E3E; ">
+    <nav class="navbar navbar-sticky-top navbar-expand-md" >
           <%= link_to 'Vancouver 𝓝ow!', root_path, class: "nav-link" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           MENU <span class="navbar-toggler-icon"></span>
@@ -121,7 +121,7 @@
 
 
 
-    <main class="container-fluid">
+    <main class="container-fluid" id="video-container">
         <%# ALERTS %>
         <% if flash[:notice].present? %>
           <div class="alert alert-success alert-dismissable fade-show" role="alert">

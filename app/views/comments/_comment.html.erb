@@ -1,16 +1,25 @@
 <div class="comment-list">
-  <% @comments.each do |comment| %>
-    <div class="comment-list-item">
-      <p><%= comment.body %></p>
-      <p><strong>Created At:</strong> <%= time_ago_in_words(comment.created_at) %> ago</p>
-      <% if can? :manage, comment %>
-      <%= link_to(
-        'Delete',
-        comment_path(comment),
-        data: {confirm: 'Are you sure?'},
-        method: :delete
-      ) %>
-      <% end %>
+
+    <div class="comment-list-item container">
+      <div class="row">
+        <div class="col-md-3">
+          <span class="logo"><%= fa_icon('user-circle-o 2x') %></span>
+        </div>
+        <div class="col-md-9">
+          <p><%= comment.body %></p>
+          <p>Created At: <%= time_ago_in_words(comment.created_at) %> ago</p>
+
+          <% if can? :manage, comment %>
+          <%= link_to(
+            'Delete',
+            comment_path(comment),
+            data: {confirm: 'Are you sure?'},
+            method: :delete
+          ) %>
+          <% end %>
+        </div>
+      </div>
+
     </div>
-  <% end %>
+
 </div>

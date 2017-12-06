@@ -8,11 +8,9 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-
   def create
     @event = Event.new event_params
     @event.user = current_user
-
     if @event.save
       # flash notice
     redirect_to event_path(@event)
@@ -26,7 +24,6 @@ class EventsController < ApplicationController
     @comment = Comment.new
     @comments = @event.comments
     @like = @event.likes.find_by_user_id current_user
-
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @event }
@@ -51,10 +48,6 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  # def index
-  #   @events = Event.order(created_at: :desc)
-  # end
-
 
   def index
       # @events = Event.all
@@ -69,14 +62,6 @@ class EventsController < ApplicationController
       @events = Event.all.order('created_at DESC')
     end
   end
-
-
-
-
-
-
-
-
 
 
   private

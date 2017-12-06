@@ -1,78 +1,87 @@
-<div class="container">
-<div class="row">
-  <div class="col-8">
-    <div>
-    <img class= "grow show" <%= image_tag @event.image.url(:large), style: "width:700px; height:350px" if @event.image.present? %>
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-8" id="show-col">
+    <img class= "grow show" <%= image_tag @event.image.url(:large), style: "width:100%; height:400px" if @event.image.present? %>
+
+  </div>
+  <div class="col-4" id="map-col">
+    <div id="map" style='width: 100%; height: 400px;'></div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h2><%= @event.title %></h2>
+      <p><strong>Event Details:</strong> <%= @event.description %></p>
+      <p>By <%= link_to @event.user&.full_name %>&nbsp;<button><%= @event.category.name %></button></p>
+      <div class="">
+      <% if user_signed_in? && can?(:crud, @event) %>
+        <%= link_to 'Edit', edit_event_path(@event) %>
+        <%= link_to(
+          'Delete',
+          event_path(@event),
+          data: {confirm: 'Are you sure?'},
+          method: :delete
+        ) %>
+      <% end %>
+
+    </div>
+
+
+
+
+    <div class="">
+      <% if user_signed_in? && can?(:like, @event) %>
+        <% if @like.present? %>
+          <%= link_to fa_icon('times 2x'), like_path(@like), method: :delete %>
+        <% else %>
+          <%= link_to fa_icon('car 2x'), event_likes_path(@event), method: :post %>
+        <% end %>
+      <% end %>
+  <%= pluralize(@event.likes.count, 'person') %> going to this event.
+</div>
+
+
+    </div>
+
+    <div class="col-md-4">
+
+      <p><strong>Price:</strong> $<%= @event.price %></p>
+      <br/>
+      <p><strong>Date:</strong> <%= @event.make_date %></p>
+      <br/>
+      <p><strong>Location:</strong> <%= @event.location %></p>
+      <br />
+      <span><p><strong>From:</strong> <%= @event.format_start %></p>
+      <p><strong>To:</strong> <%= @event.format_end %></p></span>
+      <br />
+      <button><%= link_to "Buy Tickets", new_event_ticket_path(@event) %></button>
+    </div>
   </div>
 
-    <div>
-      <h2><%= @event.title %></h2>
+</div>
+
+
+
+
+
+<div class="row">
+  <div class="col-2">
+  </div>
+  <div class="col-6">
+    <%= render 'comments/comment_form' %>
+    <div class="comment-list">
+      <% @event.comments.each do |comment| %>
+      <%= render '/comments/comment', comment: comment %>
+      <% end %>
     </div>
   </div>
   <div class="col-4">
-    <div style='width: 500px;'>
-      <div id="map" style='width: 500px; height: 400px;'></div>
-    </div>
   </div>
-
-
-<p><strong>Event Details:</strong> <%= @event.description %></p>
-<p><strong>Price:</strong> $<%= @event.price %></p>
-<p><strong>Date:</strong><%= @event.make_date %></p>
-<p><strong>Location:</strong><%= @event.location %></p>
-<span><p><strong>From:</strong><%= @event.format_start %></p>
-<p><strong>To:</strong><%= @event.format_end %></p></span>
-<p><%#= @event.category.name %></p>
-<% if user_signed_in? && can?(:like, @event) %>
-  <% if @like.present? %>
-    <%= link_to fa_icon('times 2x'), like_path(@like), method: :delete %>
-  <% else %>
-    <%= link_to fa_icon('car 2x'), event_likes_path(@event), method: :post %>
-  <% end %>
-<% end %>
-
-<%= pluralize(@event.likes.count, 'person') %> going to this event.
-<%= link_to "Buy Tickets", new_event_ticket_path(@event) %>
-<p>By <%= link_to @event.user&.full_name %></p>
-
-<% if user_signed_in? && can?(:crud, @event) %>
-  <%= link_to 'Edit', edit_event_path(@event) %>
-  <%= link_to(
-    'Delete',
-    event_path(@event),
-    data: {confirm: 'Are you sure?'},
-    method: :delete
-  ) %>
-<% end %>
-
-
-
-<div class="row">
-    <div class="col-2">
-        <span class="logo"><%= fa_icon('user-circle-o 2x') %></span>
-    </div>
-    <div class="col-6">
-      <h5>Comments</h5>
-
-      <%= render 'comments/comment_form' %>
-
-      <div class="comment-list">
-        <% @event.comments.each do |comment| %>
-            <%= render '/comments/comment', comment: comment %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-4">
-    </div>
-  </div>
-
-
-
-
-
 </div>
-</div>
+
+
 
 
 

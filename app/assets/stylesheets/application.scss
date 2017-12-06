@@ -16,21 +16,63 @@
   *= require_tree .
   *= require_self
   */
+  @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
 
   html {
     font-family: 'Helvetica Neue', sans-serif;
+    height: 100%;
   }
 
   * {
-    font-family: inherit;
+    font-family: 'Ubuntu', sans-serif;
   }
+
+  // navigation
 
   .navbar-nav{
     margin-left: auto;
   }
 
-  html { height: 100%; }
+  .navbar{
+    border-style: solid;
+    border-color: rgba(80,90,220,0.5);
+    border-left:none;
+    border-right: none;
+    border-top: none;
+  }
+
+.nav-item{
+  font-family: Helvetica;
+  font-size: 0.8em;
+  font-weight: lighter;
+}
+
+#video-container{
+  padding:0;
+  margin:0;
+}
+
+.front-text {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    font-weight:lighter;
+    color: rgba(0,0,0,1);
+    font-size: 250%;
+    margin-top: 10%;
+    border-style: solid;
+
+    border-width:thin;
+    border-color: none;
+    border-left: none;
+    background: linear-gradient(to right, rgba(255,255,255,0.5), rgba(255,255,255,0.4), rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+    border-right: none;
+}
+
+
+
   body {
     min-height:100%;
     position:relative;
@@ -38,11 +80,37 @@
     margin:0;
 
   }
+
+  main{
+    background-color: none;
+  }
+
+  .jumbotron{
+    padding:0;
+    background-color:white;
+  }
+
+  .bottom-body{
+    background-color: rgba(230,230,255,1)
+  }
+
+  .bottom-container{
+    background-color: rgba(230,230,255,1);
+    margin:auto;
+    margin-left:none;
+    margin-right:none;
+  }
+
+  .video{
+    padding:0;
+    margin: 0;
+  }
+
   .footer {
     position: absolute;
     left: 0 ; right: 0; bottom: 0;
     height:130px;
-    background-color: #626262;
+    background-color: rgba(80,90,220,0.5);
     color: white;
     padding-top:5px;
 
@@ -243,127 +311,49 @@
   }
 
 
-  //  body {
-  //     font: 400 15px/1.8 Lato, sans-serif;
-  //     color: #777;
-  // }
-  // h3, h4 {
-  //     margin: 10px 0 30px 0;
-  //     letter-spacing: 10px;
-  //     font-size: 20px;
-  //     color: #111;
-  // }
-  // .container {
-  //     padding: 80px 120px;
-  // }
-  // .person {
-  //     border: 10px solid transparent;
-  //     margin-bottom: 25px;
-  //     width: 80%;
-  //     height: 80%;
-  //     opacity: 0.7;
-  // }
-  // .person:hover {
-  //     border-color: #f1f1f1;
-  // }
-  // // .carousel-inner img {
-  // //     -webkit-filter: grayscale(90%);
-  // //     filter: grayscale(90%); /* make all photos black and white */
-  // //     width: 100%; /* Set width to 100% */
-  // //     margin: auto;
-  // // }
-  // // .carousel-caption h3 {
-  // //     color: #fff !important;
-  // // }
-  // // @media (max-width: 600px) {
-  // //   .carousel-caption {
-  // //     display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-  // //   }
-  // // }
-  // .bg-1 {
-  //     background: #2d2d30;
-  //     color: #bdbdbd;
-  // }
-  // .bg-1 h3 {color: #fff;}
-  // .bg-1 p {font-style: italic;}
-  // .list-group-item:first-child {
-  //     border-top-right-radius: 0;
-  //     border-top-left-radius: 0;
-  // }
-  // .list-group-item:last-child {
-  //     border-bottom-right-radius: 0;
-  //     border-bottom-left-radius: 0;
-  // }
-  // .thumbnail {
-  //     padding: 0 0 15px 0;
-  //     border: none;
-  //     border-radius: 0;
-  // }
-  // .thumbnail p {
-  //     margin-top: 15px;
-  //     color: #555;
-  // }
-  // .btn {
-  //     padding: 10px 20px;
-  //     background-color: #333;
-  //     color: #f1f1f1;
-  //     border-radius: 0;
-  //     transition: .2s;
-  // }
-  // // #googleMap {
-  // //     width: 100%;
-  // //     height: 400px;
-  // //     -webkit-filter: grayscale(100%);
-  // //     filter: grayscale(100%);
-  // // }
-  // .navbar {
-  //     font-family: Montserrat, sans-serif;
-  //     margin-bottom: 0;
-  //     background-color: #2d2d30;
-  //     border: 0;
-  //     font-size: 11px !important;
-  //     letter-spacing: 4px;
-  //     opacity: 0.9;
-  // }
-  // .navbar li a, .navbar .navbar-brand {
-  //     color: #d5d5d5 !important;
-  // }
-  // .navbar-nav li a:hover {
-  //     color: #fff !important;
-  // }
-  // .navbar-nav li.active a {
-  //     color: #fff !important;
-  //     background-color: #29292c !important;
-  // }
-  // .navbar-default .navbar-toggle {
-  //     border-color: transparent;
-  // }
-  // .open .dropdown-toggle {
-  //     color: #fff;
-  //     background-color: #555 !important;
-  // }
-  // .dropdown-menu li a {
-  //     color: #000 !important;
-  // }
-  // .dropdown-menu li a:hover {
-  //     background-color: red !important;
-  // }
-  // footer {
-  //     background-color: #2d2d30;
-  //     color: #f5f5f5;
-  //     padding: 32px;
-  // }
-  // footer a {
-  //     color: #f5f5f5;
-  // }
-  // footer a:hover {
-  //     color: #777;
-  //     text-decoration: none;
-  // }
-  // .form-control {
-  //     border-radius: 0;
-  // }
-  // textarea {
-  //     resize: none;
-  // }
+// start events show page
+#map-col, #show-col{
+  padding: 0;
+}
+
+//card body
+
+.card-body {
+  height: 225px;
+  overflow: auto;
+  // background-color:
+}
+
+
+// end events show page
+
+// start events index
+
+.events-heading{
+  text-align: center;
+}
+
+.events-button{
+  text-align:right;
+}
+
+.events-search{
+  text-align:left;
+}
+
+#events-heading, #events-button, #events-search{
+  padding: 0px;
+}
+
+.card-img-top{
+  height: 30vh;
+}
+
+.card-outline-secondary{
+  margin-bottom: 10px;
+}
+// end events index
+
+
+
   @import "bootstrap"

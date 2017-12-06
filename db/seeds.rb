@@ -11,23 +11,17 @@ Category.destroy_all
 Comment.destroy_all
 User.destroy_all
 Discount.destroy_all
+AdminUser.destroy_all
 
-# categories = [
-#   'IT',
-#   'Business',
-#   'Arts',
-#   'Music',
-#   'Fashion',
-#   'Sports',
-#   'Tech',
-#   'Family',
-#   'Health & Wellness',
-#   'Learning',
-#   'Dance',
-#   'Food & Drink',
-# ]
-
-
+categories = [
+  'Business',
+  'Arts',
+  'Music',
+  'Fashion',
+  'Sports',
+  'Technology',
+  'Family',
+]
 
 
 
@@ -40,11 +34,12 @@ super_user = User.create(
 )
 
 
-15.times do
+categories.each do |x|
   Category.create(
-    name: Faker::Pokemon.name
+    name: x
   )
 end
+
 categories = Category.all
 
 50.times.each do
