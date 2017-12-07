@@ -3,7 +3,7 @@
   <div class="row p-3">
     <div class="col-md-4 events-search" id="events-search">
       <%= form_tag(events_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search discounts" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search events" %>
       <%= submit_tag "Search", class: 'btn btn-outline-secondary'%>
       <% end %>
     </div>
@@ -37,14 +37,14 @@
       <% @events.each do |event| %>
       <div class="col-md-4">
         <div class="card card-outline-secondary">
-          <img class="card-img-top" <%= image_tag event.image.url(:large)%>
+          <img class="card-img-top" <%= image_tag(event&.image&.url(:large) || '') %>
           <div class="card-body">
             <h4 class="card-title"><%= link_to event.title, event_path(event) %></h4>
             <p class="card-text"><%= event.description %></p>
           </div>
           <div class="card-footer">
             <p>Event By: <%= event.user&.full_name %></p>
-            <p><%= time_ago_in_words(event.created_at) + " ago" %></p>
+            <p><%#= time_ago_in_words(event.created_at) + " ago" %></p>
           </div>
         </div>
       </div>

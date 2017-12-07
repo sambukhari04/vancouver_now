@@ -16,8 +16,8 @@
   *= require_tree .
   *= require_self
   */
-  @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
+  @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
   html {
     font-family: 'Helvetica Neue', sans-serif;
@@ -25,7 +25,7 @@
   }
 
   * {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: Ubuntu, sans-serif;
   }
 
   // navigation
@@ -58,12 +58,13 @@
     left: 0px;
     top: 0px;
     z-index: 2;
-    font-weight:lighter;
+    font-weight: lighter;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: rgba(0,0,0,1);
     font-size: 250%;
     margin-top: 10%;
     border-style: solid;
-
+    padding-left: 10px;
     border-width:thin;
     border-color: none;
     border-left: none;
@@ -81,27 +82,28 @@
 
   }
 
-  main{
+  main {
     background-color: none;
   }
 
-  .jumbotron{
-    padding:0;
+  .jumbotron {
+    padding-top: 0;
+    padding-bottom: 0;
     background-color:white;
   }
 
-  .bottom-body{
+  .bottom-body {
     background-color: rgba(230,230,255,1)
   }
 
-  .bottom-container{
+  .bottom-container {
     background-color: rgba(230,230,255,1);
     margin:auto;
     margin-left:none;
     margin-right:none;
   }
 
-  .video{
+  .video {
     padding:0;
     margin: 0;
   }

@@ -47,9 +47,9 @@
 
     <div class="col-md-4">
 
-      <p><strong>Price:</strong> $<%= @event.price %></p>
+      <p><strong>Price:</strong> <%= number_to_currency(@event.price) %></p>
       <br/>
-      <p><strong>Date:</strong> <%= @event.make_date %></p>
+      <p><strong>Date:</strong> <%= @event.make_date.strftime("%B %d, %Y") %></p>
       <br/>
       <p><strong>Location:</strong> <%= @event.location %></p>
       <br />

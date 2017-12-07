@@ -1,4 +1,6 @@
+<div class="container col-4">
 <%= image_tag @discount.image.url(:large) if @discount.image.present? %>
+</div>
 <h2><%= @discount.name %></h2>
 <p><strong>Details:</strong> <%= @discount.description %></p>
 <p><strong>Discount:</strong> <%= @discount.discount %></p>
@@ -6,7 +8,7 @@
 <p><strong>End Date:</strong> <%= @discount.end_date %></p>
 <p><strong>Location:</strong> <%= @discount.location %></p>
 
-<p>By <%= link_to @discount.user&.full_name %></p>
+<p>By: <%= link_to @discount.user&.full_name %></p>
 
 <% if user_signed_in? && can?(:update, @discount) %>
   <%= link_to 'Edit', edit_discount_path(@discount) %>

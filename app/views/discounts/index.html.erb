@@ -2,7 +2,7 @@
   <div class="row p-3">
     <div class="col-md-4 events-search" id="events-search">
       <%= form_tag(events_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search events" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search discounts" %>
       <%= submit_tag "Search", class: 'btn btn-outline-secondary'%>
       <% end %>
     </div>
@@ -25,13 +25,13 @@
       <% @discounts.each do |discount| %>
       <div class="col-md-4">
         <div class="card card-outline-secondary">
-          <img class="card-img-top" <%= image_tag discount.image.url(:large)%>
+          <img class="card-img-top" <%= image_tag discount.image.url(:large) || '' %>
           <div class="card-body">
             <h4 class="card-title"><%= link_to discount.name, discount_path(discount) %></h4>
             <p class="card-text"><%= discount.description %></p>
           </div>
           <div class="card-footer">
-            <p>discount By: <%= discount.user&.full_name %></p>
+            <p> By: <%= discount.user&.full_name %></p>
             <p><%= time_ago_in_words(discount.created_at) + " ago" %></p>
           </div>
         </div>
