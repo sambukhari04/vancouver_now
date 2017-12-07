@@ -18,3 +18,15 @@
 //= require underscore
 //= require gmaps/google
 // = require_tree .
+
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 1000);
+
+window.setTimeout(function() {
+    $(".notice").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 1000);

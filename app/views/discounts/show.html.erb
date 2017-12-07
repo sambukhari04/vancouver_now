@@ -1,10 +1,10 @@
 <%= image_tag @discount.image.url(:large) if @discount.image.present? %>
 <h2><%= @discount.name %></h2>
-<p><%= @discount.description %></p>
-<p><%= @discount.discount %></p>
-<p><%= @discount.start_date %></p>
-<p><%= @discount.end_date %></p>
-<p><%= @discount.location %></p>
+<p><strong>Details:</strong> <%= @discount.description %></p>
+<p><strong>Discount:</strong> <%= @discount.discount %></p>
+<p><strong>Start Date:</strong> <%= @discount.start_date %></p>
+<p><strong>End Date:</strong> <%= @discount.end_date %></p>
+<p><strong>Location:</strong> <%= @discount.location %></p>
 
 <p>By <%= link_to @discount.user&.full_name %></p>
 
