@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @event.comments.build(comment_params)
-
     @comment.user = current_user
 
     if @comment.save
@@ -29,7 +28,6 @@ class CommentsController < ApplicationController
   private
 
   def find_event
-    # byebug
     @event = Event.find(params[:event_id])
   end
 

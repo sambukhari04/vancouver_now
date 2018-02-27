@@ -12,7 +12,7 @@
         <div class="modal-body">
 
           <%= simple_form_for @event1 do |form| %>
-            <%= form.input :title, label: 'Event Title' %>
+            <%= form.input :title, label: 'Event Title', class: 'form-control' %>
             <%= form.input :description %>
             <%= form.input :price %>
             <%= form.input :make_date, label: 'Event date' %>
@@ -22,7 +22,7 @@
             <%= form.association :category, input_html: { class: 'chosen-select' } %>
             <%= form.input :image %>
             <%#= form.association :tags, input_html: { class: 'chosen-select' } %>
-            <%= form.submit class: 'btn btn-primary' %>
+            <%= form.submit class: 'btn btn-primary right' %>
           <% end %>
 
         </div>

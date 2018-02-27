@@ -16,9 +16,9 @@
         <button type="button"
         class="btn btn-outline-secondary btn-sm"
         data-toggle="modal" data-target="#newEventModal">Add New Event</button>
-        <%= render './modals/new_event_modal' %>
       </div>
     </div>
+    <%= render './modals/new_event_modal' %>
 
   </div>
 </div>
@@ -43,8 +43,9 @@
             <p class="card-text"><%= event.description %></p>
           </div>
           <div class="card-footer">
-            <p>Event By: <%= event.user&.full_name %></p>
+            <!-- <p>Event By: <%#= event.user&.full_name %></p> -->
             <p><%#= time_ago_in_words(event.created_at) + " ago" %></p>
+<p><strong>Price:</strong> <%= number_to_currency(event.price) %></p>
           </div>
         </div>
       </div>

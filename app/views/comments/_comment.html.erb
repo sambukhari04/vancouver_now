@@ -1,4 +1,4 @@
-<div class="comment-list">
+<!-- <div class="comment-list"> -->
 
     <div class="comment-list-item container">
       <div class="row">
@@ -7,6 +7,7 @@
         </div>
         <div class="col-md-9">
           <p><%= comment.body %></p>
+          <i>By: <%= comment.user.first_name %></i>
           <p>Created At: <%= time_ago_in_words(comment.created_at) %> ago</p>
 
           <% if can? :manage, comment %>
@@ -22,4 +23,4 @@
 
     </div>
 
-</div>
+<!-- </div> -->

@@ -32,6 +32,7 @@ class EventsController < ApplicationController
 
   def edit
     # @event = Event.find params[:id]
+    # @event_path
   end
 
   def update
@@ -62,7 +63,6 @@ class EventsController < ApplicationController
       @events = Event.all.order('created_at DESC')
     end
   end
-
 
   private
 

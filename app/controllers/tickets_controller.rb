@@ -23,9 +23,9 @@ class TicketsController < ApplicationController
       :currency    => 'cad'
     )
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to new_item_ticket_path
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_item_ticket_path
   end
 
 end

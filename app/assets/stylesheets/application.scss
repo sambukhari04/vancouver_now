@@ -87,9 +87,9 @@
   }
 
   .jumbotron {
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color:white;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: white;
   }
 
   .bottom-body {
@@ -326,6 +326,11 @@
   // background-color:
 }
 
+.comment-list-item {
+    border-left: solid medium  rgba(80,90,220,0.5);
+    padding-left: 0.5rem
+  }
+
 
 // end events show page
 
@@ -336,7 +341,7 @@
 }
 
 .events-button{
-  text-align:right;
+  text-align: right;
 }
 
 .events-search{
@@ -356,6 +361,31 @@
 }
 // end events index
 
+//Nearby events
+.nearby-map{
+  padding-bottom: 10px;
+  border-radius: 10px;
+}
+//Nearby events end
+
+
+//modal design
+.newEventModal{
+
+}
+.modal-team{
+   border-right: thin rgba(200, 200, 200, 0.5) solid;
+ }
+
+ .modal-body {
+   background-color: rgba(250, 250, 250, 0.9);
+ }
+
+//end modal
+
+#discount-button{
+  text-align:right;
+}
 
 
   @import "bootstrap"

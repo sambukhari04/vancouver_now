@@ -6,12 +6,12 @@
       <%= submit_tag "Search", class: 'btn btn-outline-secondary'%>
       <% end %>
     </div>
-    <div class="col-md-4 discounts-heading" id="discounts-heading">
+    <div class="col-md-4" id="discounts-heading">
       <h1>All Discounts</h1>
     </div>
-    <div class="row">
-      <div class="ml-auto p-2" >
-        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#newDiscountModal">Add New Discount</button>
+    <div class="col-md-4" >
+      <div id="discount-button">
+        <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal"  data-target="#newDiscountModal">Add New Discount</button>
         <%= render './modals/new_discount_modal' %>
       </div>
     </div>
@@ -29,10 +29,16 @@
           <div class="card-body">
             <h4 class="card-title"><%= link_to discount.name, discount_path(discount) %></h4>
             <p class="card-text"><%= discount.description %></p>
+            <!-- <p><strong>Details:</strong> <%#= discount.description %></p> -->
+            <p><strong>Discount:</strong> <%= discount.discount %></p>
+            <p><strong>Start Date:</strong> <%= discount.start_date.strftime("%B %d, %Y") %></p>
+            <p><strong>End Date:</strong> <%= discount.end_date.strftime("%B %d, %Y") %></p>
+            <p><strong>Location:</strong> <%= discount.location %></p>
           </div>
           <div class="card-footer">
-            <p> By: <%= discount.user&.full_name %></p>
-            <p><%= time_ago_in_words(discount.created_at) + " ago" %></p>
+            <p>  <%#= discount.user&.full_name %></p>
+            <p><%#= time_ago_in_words(discount.created_at) + " ago" %></p>
+            <p><strong>End Date:</strong> <%= discount.end_date.strftime("%B %d, %Y") %></p>
           </div>
         </div>
       </div>

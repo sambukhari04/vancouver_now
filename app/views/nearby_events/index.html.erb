@@ -1,4 +1,4 @@
-<h1>Nearby Events</h1>
+<h1 align="center">Nearby Events</h1>
 
 <% if !(session[:longitude] && session[:latitude]) %>
   <script>
@@ -11,8 +11,8 @@
 
 
 <% if @events%>
-  <div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
+  <div class="container nearby-map"style='width: 800px;'>
+    <div id="map" style='width: 200; height: 500px;'></div>
   </div>
 <% end %>
 

@@ -17,13 +17,13 @@
       <p>By <%= link_to @event.user&.full_name %>&nbsp;<button><%= @event.category.name %></button></p>
       <div class="">
       <% if user_signed_in? && can?(:crud, @event) %>
-        <%= link_to 'Edit', edit_event_path(@event) %>
-        <%= link_to(
+        <button><%= link_to 'Edit', edit_event_path(@event) %></button>
+        <button><%= link_to(
           'Delete',
           event_path(@event),
           data: {confirm: 'Are you sure?'},
           method: :delete
-        ) %>
+        ) %></button>
       <% end %>
 
     </div>
